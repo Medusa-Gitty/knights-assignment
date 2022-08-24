@@ -8,17 +8,20 @@ const xAxis = ["a", "b", "c", "d", "e", "f", "g", "h"];
 const Board = () => {
   const [selected, setSelected] = useState("");
 
+  function showPossibilities(index) {
+    setSelected(index);
+  }
+
   let board = [];
-  for (let i = 7; i >= 0; i--) {
+  for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
       board.push(
         <GridItem
-          w="100%"
-          h="80px"
-          bg="blue.100"
+          h="100px"
+          bg={`${i}${j}` === selected ? "white" : "blue.100"}
           border="1px solid red"
-          align="left"
-          onClick={() => setSelected(`${i}${j}`)}
+          onClick={() => showPossibilities(`${i}${j}`)}
+          key={`${i}${j}`}
         >
           {yAxis[i]},{xAxis[j]}
         </GridItem>
@@ -28,7 +31,7 @@ const Board = () => {
 
   return (
     <>
-      <Grid templateColumns="repeat(8, 80px)">{board}</Grid>
+      <Grid templateColumns="repeat(8, 100px)">{board}</Grid>
       <Box>Selected = {selected}</Box>
     </>
   );
