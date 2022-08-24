@@ -1,15 +1,18 @@
 import React from "react";
 import { Grid, GridItem, Box } from "@chakra-ui/react";
 import { useState } from "react";
+import possibilities from "../helpers/possibilities";
 
-const yAxis = [1, 2, 3, 4, 5, 6, 7, 8];
-const xAxis = ["a", "b", "c", "d", "e", "f", "g", "h"];
+const yAxis = [0, 1, 2, 3, 4, 5, 6, 7];
+const xAxis = [0, 1, 2, 3, 4, 5, 6, 7];
 
 const Board = () => {
   const [selected, setSelected] = useState("");
+  const [possible, setPossible] = useState({});
 
   function showPossibilities(index) {
     setSelected(index);
+    setPossible(possibilities(index));
   }
 
   let board = [];
