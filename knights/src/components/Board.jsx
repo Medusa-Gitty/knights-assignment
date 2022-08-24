@@ -1,6 +1,5 @@
-import React from "react";
-import { Grid, GridItem } from "@chakra-ui/react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import possibilities from "../helpers/possibilities";
 // import knight from "../assets/knight1.png";
 import Lottie from "lottie-react";
@@ -11,7 +10,7 @@ const yAxis = [0, 1, 2, 3, 4, 5, 6, 7];
 const xAxis = [0, 1, 2, 3, 4, 5, 6, 7];
 
 const Board = () => {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState();
   const [possible, setPossible] = useState({});
 
   function showPossibilities(index) {
@@ -20,11 +19,12 @@ const Board = () => {
   }
 
   let board = [];
+
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
       board.push(
         <GridItem
-          h="100px"
+          h={["43.75", "100px"]}
           bg={(i + j) % 2 === 0 ? "#FFFFDD" : "#86A666"}
           onClick={() => showPossibilities(`${i}${j}`)}
           key={`${i}${j}`}
@@ -42,13 +42,14 @@ const Board = () => {
   return (
     <>
       <Grid
-        width="820px"
+        width={["350px", "800px"]}
         margin="auto"
-        templateColumns="repeat(8, 100px)"
+        templateColumns="repeat(8,1fr)"
         border="10px solid brown"
       >
         {board}
       </Grid>
+      {!selected ? <Box p={4}>Please click on the board</Box> : null}
     </>
   );
 };
