@@ -1,7 +1,11 @@
 import React from "react";
-import { Grid, GridItem, Box } from "@chakra-ui/react";
+import { Grid, GridItem, Spinner } from "@chakra-ui/react";
 import { useState } from "react";
 import possibilities from "../helpers/possibilities";
+// import knight from "../assets/knight1.png";
+import Lottie from "lottie-react";
+import knight from "../assets/animations/knight.json";
+import movable from "../assets/animations/movable.json";
 
 const yAxis = [0, 1, 2, 3, 4, 5, 6, 7];
 const xAxis = [0, 1, 2, 3, 4, 5, 6, 7];
@@ -21,12 +25,15 @@ const Board = () => {
       board.push(
         <GridItem
           h="100px"
-          bg={`${i}${j}` === selected ? "white" : "blue.100"}
-          border="1px solid red"
+          bg={(i + j) % 2 === 0 ? "#FFFFDD" : "#86A666"}
           onClick={() => showPossibilities(`${i}${j}`)}
           key={`${i}${j}`}
         >
-          {yAxis[i]},{xAxis[j]}
+          {`${i}${j}` === selected ? (
+            <Lottie animationData={knight} loop={false} />
+          ) : possible[`${i}${j}`] === undefined ? null : (
+            <Lottie animationData={movable} loop={true} />
+          )}
         </GridItem>
       );
     }
@@ -35,7 +42,6 @@ const Board = () => {
   return (
     <>
       <Grid templateColumns="repeat(8, 100px)">{board}</Grid>
-      <Box>Selected = {selected}</Box>
     </>
   );
 };

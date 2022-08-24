@@ -7,7 +7,7 @@ const possibilities = (index) => {
       return;
     }
     if (n === 0) {
-      count[`${i},${j}`] = 1;
+      count[`${i}${j}`] = 1;
       return;
     }
     recursion(i + 2, j - 1, n - 1);
