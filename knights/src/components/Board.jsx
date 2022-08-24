@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, GridItem, Spinner } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import { useState } from "react";
 import possibilities from "../helpers/possibilities";
 // import knight from "../assets/knight1.png";
@@ -41,7 +41,14 @@ const Board = () => {
 
   return (
     <>
-      <Grid templateColumns="repeat(8, 100px)">{board}</Grid>
+      <Grid
+        width="820px"
+        margin="auto"
+        templateColumns="repeat(8, 100px)"
+        border="10px solid brown"
+      >
+        {board}
+      </Grid>
     </>
   );
 };
