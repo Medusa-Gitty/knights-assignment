@@ -8,5 +8,4 @@
 **An app to show all the possible movable postion from the current position of a Knight in 8 * 8 Chessboard**
 
 **How to Use?** 
-
-**Just Click on the board**
+**1. Just Click on the board**
